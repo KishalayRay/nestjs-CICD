@@ -16,7 +16,7 @@ describe('AppController', () => {
 
   describe('root', () => {
     it('should return "Hello World! there everyone this is a test of the emergency broadcast system"', () => {
-      expect(appController.getHello()).toBe('Hello World! there everyone this is a test of the emergency broadcast system);
+      expect(appController.getHello()).toBe('Hello World! there everyone this is a test of the emergency broadcast system');
     });
   });
 });
