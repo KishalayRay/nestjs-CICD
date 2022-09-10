@@ -35,7 +35,7 @@ jobs:
        env: 
         IMAGE_TAG: ${{github.sha}}
        run: |
-        aws ecr-public get-login-password --region ${{secrets.AWS_REGION}} | docker login --kishalaydev22@gmail.com AWS --+y7hRF%Q_uPkG%3-stdin ${{secrets:AWS_ECR}}
+        aws ecr-public get-login-password --region ${{secrets.AWS_REGION}} | docker login --username AWS --password-stdin ${{secrets.AWS_ECR}}
         docker build -t $AWS_REPOSITORY:$IMAGE_TAG .
-        docker tag $AWS_REPOSITORY:$IMAGE_TAG ${{secrets:AWS_ECR}}/$AWS_REPOSITORY:$IMAGE_TAG
-        docker push ${{secrets:AWS_ECR}}/$AWS_REPOSITORY:$IMAGE_TAG
+        docker tag $AWS_REPOSITORY:$IMAGE_TAG ${{secrets.AWS_ECR}}/$AWS_REPOSITORY:$IMAGE_TAG
+        docker push ${{secrets.AWS_ECR}}/$AWS_REPOSITORY:$IMAGE_TAG
