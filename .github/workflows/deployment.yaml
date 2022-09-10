@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
       
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -38,4 +38,5 @@ jobs:
           aws ecr-public get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.AWS_ECR }}
           docker build -t $AWS_REPOSITORY:$IMAGE_TAG .
           docker tag $AWS_REPOSITORY:$IMAGE_TAG ${{ secrets.AWS_ECR }}/$AWS_REPOSITORY:$IMAGE_TAG
-          docker push ${{ secrets.AWS_ECR }}/$AWS_REPOSITORY:$IMAGE_TAG
+          docker push ${{secrets.AWS_ECR}}/$AWS_REPOSITORY:$IMAGE_TAG
+          echo "::set-output name=image::${{ secrets.AWS_ECR }}/$AWS_REPOSITORY:$IMAGE_TAG"
